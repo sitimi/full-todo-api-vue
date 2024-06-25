@@ -2,15 +2,9 @@
 import axios from 'axios';
 
 const URL = "http://localhost:8080/todos";
-const getData =()=>{
-  axios.get(URL)
-  .then((response)=>{
-    console.log(response)
-  })
-  .catch((error)=>{
-    console.log('エラー発生')
-    console.log(error.message)
-  })
+const getData = async ()=>{
+  const response = await axios.get(URL)
+  console.log(response.data)
 
 }
 </script>
