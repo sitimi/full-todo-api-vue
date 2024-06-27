@@ -20,5 +20,10 @@ export const useTodosStore = defineStore('todos', () => {
     await axios.delete(URL + "/" + id)
     await fetchTodosFromDb()
   }
-  return { todos,fetchTodosFromDb,insertTodo,deleteTodo }
+  const updateTodo = async (todo)=>{
+    await axios.put(URL + "/" + todo.id, todo)
+    await fetchTodosFromDb()
+  }
+
+  return { todos,fetchTodosFromDb,insertTodo,deleteTodo,updateTodo }
 })

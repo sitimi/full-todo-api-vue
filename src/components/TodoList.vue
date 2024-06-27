@@ -1,17 +1,24 @@
 <script setup>
 import { useTodosStore } from '@/stores/todos'
 import { ref } from 'vue';
+import TodoForm from './TodoForm.vue';
 
 const todoStore = useTodosStore()
 const detailDialog = ref(false)
 const editDialog = ref(false)
+const clickedTodoId = ref(0)
 
+const updateTodo = (todo)=>{
+  todoStore.updateTodo(todo)
+  editDialog.value = false
+}
 const clickItem = (val, id)=>{
   switch (val.id) {
     case 1:
       detailDialog.value = true
       break;
     case 2:
+      clickedTodoId.value = id
       editDialog.value = true
       break;
     case 3:
@@ -22,7 +29,7 @@ const clickItem = (val, id)=>{
   }
 }
 const items = [
-{ title: "詳細", value: 1 },
+  { title: "詳細", value: 1 },
   { title: "編集", value: 2 },
   { title: "削除", value: 3 },
 ]
@@ -63,6 +70,12 @@ const items = [
       </tr>
     </tbody>
     <v-dialog
+      v-model="editDialog"
+    >
+        <TodoForm :todo-id="clickedTodoId" @onClickCancel="editDialog = false"
+        @onClickSave="updateTodo"/>
+    </v-dialog>
+    <v-dialog
       v-model="detailDialog"
     >
       <v-sheet>
@@ -77,20 +90,6 @@ const items = [
         </v-sheet>
       </v-sheet>
     </v-dialog>
-    <v-dialog
-      v-model="editDialog"
-    >
-      <v-sheet>
-        <v-sheet class="my-2 mx-5">
-          <h2>Dialog</h2>
 
-          <p class="my-4">
-          編集ボタン用ダイアログ仮置き
-          </p>
-
-          <v-btn color="primary" block @click="editDialog = false">Close</v-btn>
-        </v-sheet>
-      </v-sheet>
-    </v-dialog>
   </v-table>
 </template>
