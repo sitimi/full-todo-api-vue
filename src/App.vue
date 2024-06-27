@@ -35,7 +35,7 @@ const onClickSave = (todo) =>{
       </v-btn>
     </v-app-bar>
     <v-main>
-      <!-- <TodoTable /> -->
+      <TodoTable />
       <TodoList />
     </v-main>
   </v-app>

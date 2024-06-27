@@ -42,6 +42,7 @@ const items = [
         <th class="text-left">title</th>
         <th class="text-left">text</th>
         <th class="text-left">status</th>
+        <th class="text-left">start_date</th>
         <th class="text-left">due_date</th>
         <th class="text-left">created_at</th>
         <th class="text-left">updated_at</th>
@@ -53,6 +54,7 @@ const items = [
         <td>{{ todo.title }}</td>
         <td>{{ todo.text }}</td>
         <td>{{ todo.status }}</td>
+        <td>{{ todo.startDate }}</td>
         <td>{{ todo.dueDate }}</td>
         <td>{{ todo.createdAt }}</td>
         <td>{{ todo.updatedAt }}</td>
