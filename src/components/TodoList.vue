@@ -5,10 +5,8 @@ import { ref } from 'vue';
 const todoStore = useTodosStore()
 const detailDialog = ref(false)
 const editDialog = ref(false)
-const deleteTodo = (index) => {
-  console.log(index)
-}
-const clickItem = (val, index)=>{
+
+const clickItem = (val, id)=>{
   switch (val.id) {
     case 1:
       detailDialog.value = true
@@ -17,9 +15,8 @@ const clickItem = (val, index)=>{
       editDialog.value = true
       break;
     case 3:
-      deleteTodo(index);
+      todoStore.deleteTodo(id);
       break;
-  
     default:
       break;
   }
@@ -34,6 +31,7 @@ const items = [
   <v-table>
     <thead>
       <tr>
+        <th class="text-left">id</th>
         <th class="text-left">title</th>
         <th class="text-left">text</th>
         <th class="text-left">status</th>
@@ -43,7 +41,8 @@ const items = [
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(todo,index) in todoStore.todos" :key="todo.id">
+      <tr v-for="todo in todoStore.todos" :key="todo.id">
+        <td>{{ todo.id }}</td>
         <td>{{ todo.title }}</td>
         <td>{{ todo.text }}</td>
         <td>{{ todo.status }}</td>
@@ -56,7 +55,7 @@ const items = [
               <v-btn color="primary" size="small"  icon="mdi-dots-vertical" v-bind="props"></v-btn>
             </template>
 
-            <v-list :items="items" @click:select="clickItem($event,index)">
+            <v-list :items="items" @click:select="clickItem($event,todo.id)">
 
             </v-list>
           </v-menu>
