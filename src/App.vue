@@ -2,7 +2,8 @@
 import { onMounted } from 'vue'
 import { useTodosStore } from '@/stores/todos'
 import { ref } from 'vue'
-import TodoList from '@/components/TodoList.vue'
+import TodoTable from '@/components/TodoTable.vue'
+import TodoList from './components/TodoList.vue'
 import TodoForm from '@/components/TodoForm.vue'
 
 const todoStore = useTodosStore()
@@ -35,6 +36,7 @@ const onClickSave = (todo) =>{
       </v-btn>
     </v-app-bar>
     <v-main>
+      <!-- <TodoTable /> -->
       <TodoList />
     </v-main>
   </v-app>

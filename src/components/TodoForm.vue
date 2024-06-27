@@ -5,19 +5,16 @@ const props = defineProps(['todoId', 'cardTitle'])
 
 const todoStore = useTodosStore()
 onMounted(() => {
-  if(props.todoId !== 0){
+  if(props.todoId !== undefined){
     const todos = todoStore.todos
     const foundTodo = todos.find( ({ id }) => id == props.todoId)
     todo.value = {...foundTodo}
+  }else{
+    todo.value.status = '未着手'
   }
 })
 
-const todo = ref({
-  title: '',
-  text: '',
-  status: '未着手',
-  dueDate: ''
-})
+const todo = ref({})
 const statusData = ['未着手', '着手', '完了']
 </script>
 
@@ -49,9 +46,9 @@ const statusData = ['未着手', '着手', '完了']
         color="primary"
         label="期限"
         variant="underlined"
-        type="date"
+        type="datetime-local"
         class="w-25 mx-auto"
-        min-width="140px"
+        min-width="200px"
       ></v-text-field>
     </v-container>
 
