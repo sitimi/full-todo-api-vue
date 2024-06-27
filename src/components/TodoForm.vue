@@ -1,7 +1,7 @@
 <script setup>
 import { useTodosStore } from '@/stores/todos'
 import { ref, onMounted } from 'vue'
-const props = defineProps(['todoId'])
+const props = defineProps(['todoId', 'cardTitle'])
 
 const todoStore = useTodosStore()
 onMounted(() => {
@@ -11,6 +11,7 @@ onMounted(() => {
     todo.value = {...foundTodo}
   }
 })
+
 const todo = ref({
   title: '',
   text: '',
@@ -21,7 +22,7 @@ const statusData = ['未着手', '着手', '完了']
 </script>
 
 <template>
-  <v-card class="mx-auto w-50" max-width="600px" title="New todo">
+  <v-card class="mx-auto w-50" max-width="600px" :title="'Todo' + cardTitle">
     <v-container>
       <v-text-field
         v-model="todo.title"

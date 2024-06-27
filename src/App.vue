@@ -28,7 +28,9 @@ const onClickSave = (todo) =>{
       <v-btn color="primary" variant="elevated" class="mx-auto">
         新規作成
         <v-dialog v-model="dialog" persistent activator="parent">
-          <TodoForm @on-click-cancel="dialog = false" @on-click-save="onClickSave"
+          <TodoForm
+          card-title="新規作成"
+          @on-click-cancel="dialog = false" @on-click-save="onClickSave"
         /></v-dialog>
       </v-btn>
     </v-app-bar>

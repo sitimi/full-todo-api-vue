@@ -72,9 +72,11 @@ const items = [
     <v-dialog
       v-model="editDialog"
     >
-        <TodoForm :todo-id="clickedTodoId" @onClickCancel="editDialog = false"
-        @onClickSave="updateTodo"/>
-    </v-dialog>
+        <TodoForm 
+        cardTitle="編集"
+        :todo-id="clickedTodoId" @onClickCancel="editDialog = false"
+        @onClickSave="updateTodo"
+    /></v-dialog>
     <v-dialog
       v-model="detailDialog"
     >
