@@ -42,9 +42,19 @@ const statusData = ['未着手', '着手', '完了']
         min-width="115px"
       ></v-select>
       <v-text-field
+        v-model="todo.startDate"
+        color="primary"
+        label="開始日時"
+        variant="underlined"
+        type="datetime-local"
+        class="w-25 mx-auto"
+        min-width="200px"
+      ></v-text-field>
+      <p class="text-center">から</p>
+      <v-text-field
         v-model="todo.dueDate"
         color="primary"
-        label="期限"
+        label="終了日時"
         variant="underlined"
         type="datetime-local"
         class="w-25 mx-auto"
