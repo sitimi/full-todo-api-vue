@@ -10,7 +10,6 @@ export const useTodosStore = defineStore('todos', () => {
   const fetchTodosFromDb = async () => {
     const response = await axios.get(URL)
     todos.value = response.data
-    console.log('---フェッチされました---')
   }
   const insertTodo = async (todo) => {
     await axios.post(URL, todo)

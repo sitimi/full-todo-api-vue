@@ -11,7 +11,6 @@ const todoStore = useTodosStore()
 // マウント時にDBからデータ取得
 onMounted(async () => {
   await todoStore.fetchTodosFromDb()
-  console.log('---onMounted---')
 })
 const dialog = ref(false)
 const onClickSave = (todo) =>{
